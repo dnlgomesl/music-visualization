@@ -26,27 +26,31 @@ data, sample_rate = sf.read(music_file)
 
 # Define as notas e cores correspondentes
 notes = {
-    "C": (255, 0, 0),    # Vermelho
-    "C#": (255, 165, 0), # Laranja
-    "D": (255, 255, 0),  # Amarelo
-    "D#": (0, 128, 0),   # Verde Escuro
-    "E": (0, 0, 255),    # Azul
-    "F": (75, 0, 130),   # Roxo
-    "F#": (238, 130, 238), # Violeta
-    "G": (255, 0, 255),  # Magenta
-    "G#": (255, 192, 203), # Rosa Claro
-    "A": (255, 255, 255),# Branco
-    "A#": (128, 128, 128), # Cinza
-    "B": (128, 0, 0)     # Marrom
+    "C": np.array([255, 0, 0]),    # Vermelho
+    "C#": np.array([255, 165, 0]), # Laranja
+    "D": np.array([255, 255, 0]),  # Amarelo
+    "D#": np.array([0, 128, 0]),   # Verde Escuro
+    "E": np.array([0, 0, 255]),    # Azul
+    "F": np.array([75, 0, 130]),   # Roxo
+    "F#": np.array([238, 130, 238]), # Violeta
+    "G": np.array([255, 0, 255]),  # Magenta
+    "G#": np.array([255, 192, 203]), # Rosa Claro
+    "A": np.array([255, 255, 255]),# Branco
+    "A#": np.array([128, 128, 128]), # Cinza
+    "B": np.array([128, 0, 0])     # Marrom
 }
 
 # Configura a janela
 window = pygame.display.set_mode(WINDOW_SIZE)
 pygame.display.set_caption("Visualização de Notas Musicais")
 
+# Função para calcular a diferença entre cores RGB
+def color_difference(color1, color2):
+    return np.sqrt(np.sum((color2 - color1) ** 2))
+
 # Função para obter a nota mais próxima da frequência
 def get_closest_note_frequency(frequency):
-    closest_note = min(notes, key=lambda x: abs(notes[x] - frequency))
+    closest_note = min(notes, key=lambda x: color_difference(notes[x], frequency))
     return notes[closest_note]
 
 # Loop principal
