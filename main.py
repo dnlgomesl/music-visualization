@@ -13,6 +13,7 @@ WINDOW_SIZE = (WINDOW_WIDTH, WINDOW_HEIGHT)
 
 # Configurações de cores
 BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 
 # Carrega a música
 music_file = "C:/Users/dev/Documents/GitHub/music-visualization/musicas/Drive.mp3"
@@ -44,6 +45,9 @@ notes = {
 window = pygame.display.set_mode(WINDOW_SIZE)
 pygame.display.set_caption("Visualização de Notas Musicais")
 
+# Configura a fonte de texto
+font = pygame.font.Font(None, 36)
+
 # Função para calcular a diferença entre cores RGB
 def color_difference(color1, color2):
     return np.sqrt(np.sum((color2 - color1) ** 2))
@@ -51,7 +55,7 @@ def color_difference(color1, color2):
 # Função para obter a nota mais próxima da frequência
 def get_closest_note_frequency(frequency):
     closest_note = min(notes, key=lambda x: color_difference(notes[x], frequency))
-    return notes[closest_note]
+    return closest_note, notes[closest_note]
 
 # Loop principal
 clock = pygame.time.Clock()
@@ -78,10 +82,15 @@ while running:
     dominant_frequency = positive_frequencies[max_amplitude_index]
 
     # Obtém a nota mais próxima da frequência dominante
-    closest_note_color = get_closest_note_frequency(dominant_frequency)
+    closest_note, closest_note_color = get_closest_note_frequency(dominant_frequency)
 
     # Preenche a janela com a cor da nota mais próxima
     window.fill(closest_note_color)
+
+    # Renderiza o texto da nota na janela
+    text_surface = font.render(closest_note, True, WHITE)
+    text_rect = text_surface.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+    window.blit(text_surface, text_rect)
 
     # Atualiza a janela
     pygame.display.update()
@@ -91,6 +100,9 @@ while running:
 
     # Incrementa o quadro
     frame = (frame + 1) % (len(data) // sample_rate)
+    
+    # Delay de 500 milissegundos
+    pygame.time.delay(100)
 
 # Encerra o Pygame
 pygame.quit()
