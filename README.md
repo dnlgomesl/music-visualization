@@ -19,7 +19,7 @@ Este é um programa em Python que visualiza notas musicais a partir de um arquiv
 3. Crie e ative um ambiente virtual (opcional):
 
    ```bash
-   python -m venv env
+   python -m venv venv
    source env/bin/activate
    ```
 
