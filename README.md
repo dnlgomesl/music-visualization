@@ -46,3 +46,6 @@ python main.py
 ```
 
 Isso iniciará a visualização das notas musicais de acordo com o arquivo de música definido no arquivo `.env`.
+
+## Observações
+A música presente na pasta `músicas` do projeto é uma música sem copyrigth, disponível no [link](https://soundcloud.com/hothammusic/summertime])
