@@ -2,6 +2,11 @@ import pygame
 import numpy as np
 import soundfile as sf
 import sys
+import os
+from dotenv import load_dotenv
+
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
 
 # Inicializa o Pygame
 pygame.init()
@@ -16,7 +21,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 # Carrega a música
-music_file = "C:/Users/dev/Documents/GitHub/music-visualization/musicas/Drive.mp3"
+music_file = os.getenv("MUSIC_PATH")
 pygame.mixer.music.load(music_file)
 
 # Reproduz a música em loop
