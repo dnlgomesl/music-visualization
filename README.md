@@ -2,6 +2,9 @@
 
 Este é um programa em Python que visualiza notas musicais a partir de um arquivo de música. A idéia seria simular um jogo de luz de acordo com o reconhecimento das notas presente na música.
 
+## Descrição
+O Visualizador de Notas Musicais é um programa Python que combina música e cores para criar uma experiência audiovisual imersiva. Inspirado no conceito de sinestesia, onde diferentes sentidos se cruzam, o programa realiza o processo inverso do que o Nathan realizou em seu projeto 'Música Colorida'. Em vez de converter cores em notas musicais, o Visualizador de Notas Musicais analisa uma música e gera uma exibição visual em tempo real, onde cada nota é representada por uma cor correspondente. Ao reproduzir a música, o programa cria uma interação visual sincronizada, trazendo uma dimensão extra à experiência sonora. Os espectadores podem se envolver em um jogo de luzes, mergulhando em um ambiente imersivo onde as notas musicais ganham vida por meio de cores vibrantes. O programa é altamente personalizável, permitindo que os usuários explorem diferentes músicas e criem suas próprias combinações de cores e notas para uma experiência única a cada reprodução.
+
 ## Instalação
 
 1. Clone este repositório:
